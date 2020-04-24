@@ -1,0 +1,92 @@
+<div class="row homebg">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+        <form #editContactForm="ngForm" class="contactForm" novalidate>
+            <h3>Edit Contact: <b>{{contact.firstName}} {{contact.lastName}}</b></h3>
+            <br>
+            <div class="form-group">
+                <label>First Name</label>
+                <input type="text" name="firstName" required   pattern="[a-zA-Z]{2,}" class="form-control" id="fName"  [(ngModel)]="fName" #fNameRef #fNameModelRef="ngModel" ngModel>
+                    <div *ngIf="fNameModelRef.errors&&fNameModelRef.touched" class="alert alert-danger">
+                        <div [hidden]="!fNameModelRef.errors.required"> Please Enter your first name</div>
+                        <div [hidden]="!fNameModelRef.errors.pattern"> First Name should be atleast have two characters & <br> should not have numbers or special characters</div>
+                    </div>
+
+            </div>
+        
+
+            <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" name="lastName" required pattern="[a-zA-Z]{2,}"  class="form-control" id="lName"  [(ngModel)]="lName" #lNameRef #lNameModelRef="ngModel" ngModel>
+                    <div *ngIf="lNameModelRef.errors&&lNameModelRef.touched" class="alert alert-danger">
+                        <div [hidden]="!lNameModelRef.errors.required"> Please Enter Contact Last name</div>
+                        <div [hidden]="!lNameModelRef.errors.pattern"> Last Name should be atleast have two characters & <br> should not have numbers or special characters</div>
+                    </div>
+
+            </div>
+
+            <div class="form-group">
+                <label>Email</label>
+                <input type="text" name="email" required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  class="form-control" id="email"  [(ngModel)]="email" #emailRef #emailModelRef="ngModel" ngModel>
+                    <div *ngIf="emailModelRef.errors&&emailModelRef.touched" class="alert-alert-danger">
+                        <div [hidden]="!emailModelRef.errors.required"> Please Enter Contact Email</div>
+                        <div [hidden]="!emailModelRef.errors.pattern"> Not a valid email </div>
+                    </div>
+
+            </div>
+
+            <div class="form-group">
+                <label>Mobile Number</label>
+                <input type="text" name="phone" required  pattern="[0-9]{10}" placeholder="XXXXXXXXXX"  class="form-control" id="phone" #phoneRef #phoneModelRef="ngModel" [(ngModel)]="phone" ngModel>
+                    <div *ngIf="phoneModelRef.errors&&phoneModelRef.touched" class="alert alert-danger">
+                        <div [hidden]="!phoneModelRef.errors.required"> Please Enter Contact Cell number</div>
+                        <div [hidden]="!phoneModelRef.errors.pattern">Not a Valid Number </div>
+                    </div>
+
+            </div>
+            
+            <div *ngIf="editContactForm.form.valid" class="form-group button-group">
+                <button [disabled]="!editable" type="submit" data-toggle="modal" data-target="#editConfirm"   class="btn btn-primary" value="">Edit Contact</button>
+                
+                <div *ngIf="editSuccess" class="alert alert-success">Contact edited in the Directory</div>
+                <div *ngIf="editFailed" class="alrert alert-danger">Duplicate Contact! <br>Contact with Number Already exisits</div>
+
+            </div>  
+            
+            <div id="editConfirm" #addConfirm class="modal fade">
+                <div class="modal-dialog">
+                 
+                  <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" #closebutton class="close" id="closeButton" data-dismiss="modal">&times;</button>
+                        <h4>Confirm : Edit Contact</h4>
+                       
+                    </div>
+                    <div class="modal-body">
+                      <p>Do you want edit the contact <b>{{fNameRef.value}}  :  {{phoneRef.value}}</b></p>
+                        <br><br>
+                        <div class="button-group">
+                            <input type="submit" value="Confirm" data-dismiss="modal" (click)="editContact(fNameRef.value,lNameRef.value,emailRef.value,phoneRef.value)" class="btn btn-primary">
+                            <input type="submit" value="Cancel" data-dismiss="modal" class="btn btn-danger">
+                        </div>
+                   
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+            <router-outlet></router-outlet>
+        
+    
+        </form>
+
+
+    </div>
+    <div class="col-lg-4"></div>
+</div>
+
+
+  
+-

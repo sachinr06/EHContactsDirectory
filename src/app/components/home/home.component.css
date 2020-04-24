@@ -1,0 +1,21 @@
+
+.homebg{
+    height: 100vh;
+    background-color: pink;
+    margin:-20px;
+}
+
+.homedata{
+    padding-top :100px;
+    
+    text-align: center;
+}
+
+
+h1,h3{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+h1{
+    font-size: 8vh;
+}

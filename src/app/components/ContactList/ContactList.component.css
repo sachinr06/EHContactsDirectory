@@ -1,0 +1,30 @@
+
+
+.listItem{
+    border: 1.5px solid black;
+    border-radius: 5px;
+    padding: 10px;
+    margin :10px;
+    box-shadow: 5px 5px 5px black;
+    background-color: white;
+
+}
+
+
+.contactMenu{
+    padding:30px;
+    background-color:lightblue;
+    min-height: 100vh;
+}
+
+h1{
+    text-align: center;
+}
+
+.active{
+    background-color: lightgreen;
+}
+
+.disabled{
+    background-color: lightsalmon;
+}

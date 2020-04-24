@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+.contactForm{
+    padding: 50px;
+    border: 2px solid navy;
+    border-radius: 50px;
+    margin-top: 50px;
+} 
+
+.form-group{
+    padding-bottom: 20px;
+}
+
+
+.button-group{
+    text-align: center;
+}

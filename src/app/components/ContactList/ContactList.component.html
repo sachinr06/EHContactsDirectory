@@ -1,0 +1,64 @@
+
+
+ <div  class="row">
+	<div class="col-sm-2">              </div>
+	<div class="col-sm-8 contactMenu">
+        <div><h1>Contact Menu</h1></div><br>  <button (click)="addNew()"><i class="material-icons" style="font-size: 48px;">person_add </i></button><br>
+        <div class="listItem row" *ngFor="let contact of activeContacts">
+          
+            <div class="col-sm-5">
+                <div class="row">
+                    <div class="col-sm-2"><i class="material-icons" style="font-size:48px">person</i> </div>
+                    <div class="col-sm-10"> <span>{{contact.firstName}} {{contact.lastName}}</span> <br> {{contact.email}}</div>
+                </div>
+            </div>
+                
+               
+            <div class="col-sm-3">
+                <div class="row">
+                    <div class="col-sm-2"><i class="material-icons" style="font-size:36px">call</i></div>
+                    <div class="col-sm-10">  <h4>{{contact.phone}}</h4></div>
+                   
+            </div>
+            </div>
+            
+            <div class="col-sm-4">
+              <span class="active">  {{contact.status | uppercase}} </span>     
+                <input class="btn btn-default" type="submit" value="Disable" (click)="toggleStatus(contact.id)">
+                <input class="btn btn-default"  type="submit" value="Edit" (click)="editContact(contact.id)">
+                <input  class="btn btn-danger" type="submit" value="Delete" (click)="deleteContact(contact.id)">
+            </div>
+        </div>
+        <input *ngIf="!showDisabled" class="btn btn-default" type="submit" value="View Disabled Contacts" (click)=toggleDisabled()>
+        <input *ngIf="showDisabled" class="btn btn-default" type="submit" value="Hide Disabled Contacts" (click)=toggleDisabled()>
+
+        <div *ngIf="showDisabled">
+            <div  class="listItem row" *ngFor="let contact of disabledContacts">
+            
+                <div class="col-sm-5">
+                    <div class="row">
+                        <div class="col-sm-2"><i class="material-icons" style="font-size:48px">person</i> </div>
+                        <div class="col-sm-10"> <span>{{contact.firstName}} {{contact.lastName}}</span> <br> {{contact.email}}</div>
+                    </div>
+                </div>
+                    
+                
+                <div class="col-sm-3">
+                    <div class="row">
+                        <div class="col-sm-2"><i class="material-icons" style="font-size:36px">call</i></div>
+                        <div class="col-sm-10">  <h4>{{contact.phone}}</h4></div>
+                       
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                <span class="disabled">  {{contact.status | uppercase}} </span>     
+                    <input class="btn btn-default" type="submit" value="Enable" (click)="toggleStatus(contact.id)">
+                    <input class="btn btn-default"  type="submit" value="Edit" (click)="editContact(contact.id)">
+                    <input  class="btn btn-danger" type="submit" value="Delete" (click)="deleteContact(contact.id)">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
